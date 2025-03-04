@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    padding: 20px;
+
+}
+
+.banner .sliders {
+    width: 200px;
+    height: 250px;
+    position: absolute;
+    top: 10%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 20s linear infinite;
+}
+
+.banner .sliders:hover {
+    cursor: pointer;
+}
+
+
+.banner .sliders .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(550px);
+}
+
+.banner .sliders .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img2 {
+    background-image: url(i);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@keyframes autoRun {
+    from {
+        transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+    }
+
+    to {
+        transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+    }
+}
+
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .banner .sliders {
+        width: 150px;
+        height: 200px;
+        left: calc(50% - 75px);
+    }
+
+    .banner .sliders .item {
+        transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(400px);
+    }
+}
+
+@media (max-width: 768px) {
+    .banner .sliders {
+        width: 120px;
+        height: 160px;
+        left: calc(50% - 60px);
+    }
+
+    .banner .sliders .item {
+        transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(300px);
+    }
+}
+
+@media (max-width: 480px) {
+    .banner .sliders {
+        width: 100px;
+        height: 130px;
+        left: calc(50% - 50px);
+    }
+
+    .banner .sliders .item {
+        transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(180px);
+    }
+}
